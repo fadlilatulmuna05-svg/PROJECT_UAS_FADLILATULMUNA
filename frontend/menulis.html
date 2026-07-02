@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Tulis Artikel | MyArticles</title>
+
+  <!-- FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- CSS -->
+  <link
+    rel="stylesheet"
+    href="css/menulis.css"
+  >
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+
+    <div class="logo">
+      ✍️ MyArticles
+    </div>
+
+    <div class="nav-right">
+
+      <a href="cover.html">
+        Beranda
+      </a>
+
+      <a href="artikel.html">
+        Artikel
+      </a>
+
+    </div>
+
+  </nav>
+
+  <!-- CONTAINER -->
+  <section class="container">
+
+    <!-- LEFT -->
+    <div class="left">
+
+      <span class="tag">
+        ✦ Writer Space
+      </span>
+
+      <h1>
+        Tulis
+        <br>
+        Ceritamu
+      </h1>
+
+      <p>
+        Tuangkan ide, pengalaman,
+        dan tulisan terbaikmu dengan
+        tampilan editor modern.
+      </p>
+
+      <div class="floating">
+        📚
+      </div>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right">
+
+      <form id="articleForm">
+
+        <!-- TITLE -->
+        <div class="input-box">
+
+          <label>
+            Judul Artikel
+          </label>
+
+          <input
+            type="text"
+            id="title"
+            placeholder="Masukkan judul artikel..."
+          >
+
+        </div>
+
+        <!-- CONTENT -->
+        <div class="input-box">
+
+          <label>
+            Isi Artikel
+          </label>
+
+          <textarea
+            id="content"
+            placeholder="Tulis artikelmu di sini..."
+          ></textarea>
+
+        </div>
+
+        <!-- BUTTON -->
+        <button type="submit">
+          Publish Artikel
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+  <!-- JS -->
+  <script src="js/menulis.js"></script>
+
+</body>
+</html>

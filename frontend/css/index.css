@@ -1,0 +1,321 @@
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* ANIMASI BACKGROUND */
+@keyframes zoomBg{
+  from{
+    background-size:100%;
+  }
+  to{
+    background-size:115%;
+  }
+}
+
+/* ANIMASI MASUK */
+@keyframes fadeInUp{
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* ANIMASI MELAYANG */
+@keyframes floating{
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-10px);
+  }
+}
+
+/* BODY */
+body{
+  font-family:'Montserrat',sans-serif;
+
+  background:
+    linear-gradient(
+      rgba(0,0,0,0.35),
+      rgba(0,0,0,0.35)
+    ),
+    url('../img/background.jpeg');
+
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:100%;
+  background-attachment:fixed;
+
+  animation:zoomBg 15s ease-in-out infinite alternate;
+
+  min-height:100vh;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  padding:20px;
+}
+
+/* CONTAINER */
+.container{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:20px;
+}
+
+/* CARD */
+.flip-card{
+  width:340px;
+  height:450px;
+
+  perspective:1000px;
+
+  animation:
+    fadeInUp 1.2s ease,
+    floating 4s ease-in-out infinite;
+}
+
+.flip-card:hover{
+  filter:drop-shadow(0 0 25px rgba(255,255,255,0.4));
+}
+
+/* INNER */
+.flip-card-inner{
+  width:100%;
+  height:100%;
+
+  position:relative;
+
+  transform-style:preserve-3d;
+
+  transition:transform 0.8s;
+}
+
+.flip-card:hover .flip-card-inner{
+  transform:rotateY(180deg);
+}
+
+/* DEPAN DAN BELAKANG */
+.flip-card-front,
+.flip-card-back{
+  position:absolute;
+
+  width:100%;
+  height:100%;
+
+  border-radius:25px;
+
+  overflow:hidden;
+
+  backface-visibility:hidden;
+
+  box-shadow:0 15px 35px rgba(0,0,0,0.35);
+}
+
+/* CARD DEPAN */
+.flip-card-front{
+  background:rgba(255,255,255,0.12);
+
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+
+  border:1px solid rgba(255,255,255,0.2);
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+  text-align:center;
+
+  padding:20px;
+}
+
+/* FOTO */
+.flip-card-front img{
+  width:100%;
+  height:260px;
+
+  object-fit:cover;
+
+  border-radius:18px;
+
+  border:3px solid rgba(255,255,255,0.5);
+
+  margin-bottom:15px;
+
+  transition:0.4s;
+}
+
+.flip-card-front img:hover{
+  transform:scale(1.05);
+
+  box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* JUDUL */
+.flip-card-front h3{
+  font-size:24px;
+
+  color:white;
+
+  margin-bottom:8px;
+
+  text-shadow:2px 2px 8px rgba(0,0,0,0.6);
+}
+
+.desc{
+  color:white;
+
+  opacity:0.9;
+
+  font-size:14px;
+}
+
+/* CARD BELAKANG */
+.flip-card-back{
+  background:rgba(52,35,24,0.92);
+
+  backdrop-filter:blur(10px);
+
+  border:1px solid rgba(255,255,255,0.15);
+
+  color:white;
+
+  transform:rotateY(180deg);
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+
+  padding:25px;
+}
+
+/* INFO */
+.info{
+  margin-bottom:25px;
+}
+
+/* DATA */
+.row{
+  display:grid;
+  grid-template-columns:100px 10px 1fr;
+
+  align-items:center;
+
+  margin:12px 0;
+
+  font-size:15px;
+}
+
+.row span:first-child{
+  font-weight:600;
+}
+
+/* BUTTON */
+.btn{
+  text-decoration:none;
+
+  background:rgba(255,255,255,0.15);
+
+  color:white;
+
+  border:1px solid rgba(255,255,255,0.4);
+
+  border-radius:12px;
+
+  padding:12px;
+
+  text-align:center;
+
+  transition:0.3s;
+}
+
+.btn:hover{
+  background:white;
+
+  color:#4e3d30;
+
+  transform:translateY(-4px);
+}
+
+/* AUDIO */
+audio{
+  width:340px;
+
+  border-radius:12px;
+}
+
+/* TABLET */
+@media(max-width:768px){
+
+  .flip-card{
+    width:300px;
+    height:400px;
+  }
+
+  .flip-card-front img{
+    height:220px;
+  }
+
+  .row{
+    grid-template-columns:90px 10px 1fr;
+    font-size:13px;
+  }
+
+  audio{
+    width:300px;
+  }
+
+}
+
+/* MOBILE */
+@media(max-width:480px){
+
+  .flip-card{
+    width:260px;
+    height:360px;
+  }
+
+  .flip-card-front img{
+    height:180px;
+  }
+
+  .flip-card-front h3{
+    font-size:18px;
+  }
+
+  .desc{
+    font-size:12px;
+  }
+
+  .row{
+    grid-template-columns:70px 10px 1fr;
+    font-size:12px;
+  }
+
+  audio{
+    width:260px;
+  }
+.audio-box{
+  text-align:center;
+  margin:20px auto;
+  padding:15px;
+  background:rgba(255,255,255,0.2);
+  border-radius:12px;
+  backdrop-filter:blur(10px);
+  color:white;
+  max-width:400px;
+}
+}

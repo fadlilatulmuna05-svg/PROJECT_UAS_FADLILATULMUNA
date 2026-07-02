@@ -1,0 +1,415 @@
+:root{
+  --brown:#4b2e2b;
+  --soft:#8b6f5a;
+  --bg:#efe7dc;
+  --card:#ffffff;
+}
+
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* BODY */
+body{
+  font-family:'Poppins', sans-serif;
+
+  background:var(--bg);
+
+  min-height:100vh;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  overflow:hidden;
+
+  position:relative;
+}
+
+/* SHAPE */
+.shape{
+  position:absolute;
+
+  border-radius:50%;
+
+  filter:blur(10px);
+}
+
+.shape1{
+  width:500px;
+  height:500px;
+
+  background:#e0cdbb;
+
+  top:-180px;
+  left:-100px;
+}
+
+.shape2{
+  width:400px;
+  height:400px;
+
+  background:#d7bfa7;
+
+  bottom:-150px;
+  right:-100px;
+}
+
+/* CONTAINER */
+.login-container{
+  width:100%;
+  max-width:1100px;
+
+  background:rgba(255,255,255,0.55);
+
+  backdrop-filter:blur(12px);
+
+  border-radius:32px;
+
+  overflow:hidden;
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+
+  box-shadow:
+  0 15px 40px rgba(0,0,0,0.08);
+
+  position:relative;
+  z-index:2;
+}
+
+/* LEFT */
+.login-left{
+  padding:70px;
+
+  background:
+  linear-gradient(
+    135deg,
+    #d9c2ab,
+    #c8a98d
+  );
+
+  color:white;
+
+  position:relative;
+}
+
+/* TAG */
+.tag{
+  display:inline-block;
+
+  background:rgba(255,255,255,0.2);
+
+  padding:10px 18px;
+
+  border-radius:40px;
+
+  font-size:13px;
+
+  margin-bottom:25px;
+}
+
+/* TITLE */
+.login-left h1{
+  font-size:60px;
+
+  line-height:1.1;
+
+  margin-bottom:20px;
+
+  font-family:'Playfair Display', serif;
+}
+
+/* TEXT */
+.login-left p{
+  font-size:16px;
+
+  line-height:1.8;
+
+  max-width:420px;
+}
+
+/* FLOAT ICON */
+.floating-icon{
+  position:absolute;
+
+  right:50px;
+  bottom:40px;
+
+  font-size:120px;
+
+  opacity:0.2;
+
+  animation:float 6s ease-in-out infinite;
+}
+
+/* RIGHT */
+.login-right{
+  padding:70px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* FORM */
+form{
+  width:100%;
+  max-width:380px;
+}
+
+/* FORM TITLE */
+form h2{
+  font-size:38px;
+
+  margin-bottom:35px;
+
+  color:var(--brown);
+}
+
+/* INPUT BOX */
+.input-box{
+  margin-bottom:22px;
+}
+
+/* LABEL */
+.input-box label{
+  display:block;
+
+  margin-bottom:8px;
+
+  color:var(--soft);
+
+  font-size:14px;
+}
+
+/* INPUT */
+.input-box input{
+  width:100%;
+
+  padding:15px;
+
+  border:none;
+
+  border-radius:14px;
+
+  background:#f6f1ea;
+
+  outline:none;
+
+  font-size:15px;
+
+  color:var(--brown);
+
+  transition:0.3s;
+}
+
+/* INPUT FOCUS */
+.input-box input:focus{
+  box-shadow:
+  0 0 0 4px rgba(200,169,141,0.2);
+}
+
+/* PASSWORD */
+.password-wrapper{
+  position:relative;
+
+  display:flex;
+  align-items:center;
+}
+
+/* PASSWORD INPUT */
+.password-wrapper input{
+  width:100%;
+
+  padding-right:55px;
+}
+
+/* EYE BUTTON */
+.toggle-password{
+  position:absolute;
+
+  right:10px;
+
+  width:38px;
+  height:38px;
+
+  border:none;
+
+  background:transparent;
+
+  cursor:pointer;
+
+  font-size:18px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  color:#4b2e2b;
+
+  padding:0;
+
+  margin:0;
+}
+
+/* EYE HOVER */
+.toggle-password:hover{
+  background:transparent;
+
+  transform:none;
+
+  opacity:0.7;
+}
+
+/* BUTTON */
+button{
+  width:100%;
+
+  border:none;
+
+  background:var(--brown);
+  color:white;
+
+  padding:15px;
+
+  border-radius:14px;
+
+  font-size:15px;
+  font-weight:600;
+
+  cursor:pointer;
+
+  margin-top:10px;
+
+  transition:0.3s;
+}
+
+/* BUTTON HOVER */
+button:hover{
+  transform:translateY(-3px);
+
+  background:#2f1b18;
+}
+
+/* TEXT */
+.bottom-text{
+  margin-top:20px;
+
+  text-align:center;
+
+  color:var(--soft);
+
+  font-size:14px;
+}
+
+/* LINK */
+.bottom-text a{
+  color:var(--brown);
+
+  text-decoration:none;
+
+  font-weight:600;
+}
+
+/* LINK HOVER */
+.bottom-text a:hover{
+  opacity:0.7;
+}
+
+/* BACK */
+.back-home{
+  display:block;
+
+  text-align:center;
+
+  margin-top:25px;
+
+  text-decoration:none;
+
+  color:var(--brown);
+
+  font-size:14px;
+
+  transition:0.3s;
+}
+
+/* BACK HOVER */
+.back-home:hover{
+  opacity:0.7;
+}
+
+/* TOAST */
+.toast{
+  position:fixed;
+
+  bottom:30px;
+  right:30px;
+
+  background:#4b2e2b;
+  color:white;
+
+  padding:14px 22px;
+
+  border-radius:14px;
+
+  opacity:0;
+
+  transform:translateY(20px);
+
+  transition:0.3s;
+
+  z-index:999;
+}
+
+/* TOAST SHOW */
+.toast.show{
+  opacity:1;
+
+  transform:translateY(0);
+}
+
+/* FLOAT */
+@keyframes float{
+
+  0%{
+    transform:translateY(0px);
+  }
+
+  50%{
+    transform:translateY(-18px);
+  }
+
+  100%{
+    transform:translateY(0px);
+  }
+
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+
+  .login-container{
+    grid-template-columns:1fr;
+  }
+
+  .login-left{
+    display:none;
+  }
+
+}
+
+@media(max-width:500px){
+
+  .login-right{
+    padding:40px 25px;
+  }
+
+  form h2{
+    font-size:30px;
+  }
+
+}

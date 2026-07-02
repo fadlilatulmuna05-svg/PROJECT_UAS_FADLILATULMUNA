@@ -1,0 +1,243 @@
+:root{
+  --brown:#4b2e2b;
+  --soft:#8b6f5a;
+}
+
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* BODY */
+body{
+  font-family:'Poppins', sans-serif;
+
+  background:
+    linear-gradient(
+      rgba(0,0,0,0.55),
+      rgba(0,0,0,0.55)
+    ),
+    url('../img/bgmyprofile.jpeg');
+
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-attachment:fixed;
+
+  min-height:100vh;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  padding:30px;
+
+  color:white;
+}
+
+/* CONTAINER */
+.container{
+  width:100%;
+  max-width:900px;
+}
+
+/* PROFILE CARD */
+.profile-card{
+  background:rgba(255,255,255,0.12);
+
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:22px;
+
+  padding:40px;
+
+  text-align:center;
+
+  box-shadow:0 15px 40px rgba(0,0,0,0.35);
+}
+
+/* FOTO */
+.profile-card img{
+  width:150px;
+  height:150px;
+
+  object-fit:cover;
+
+  border-radius:50%;
+
+  border:3px solid rgba(255,255,255,0.6);
+
+  margin-bottom:15px;
+}
+
+/* NAMA */
+.profile-card h1{
+  font-size:28px;
+  color:white;
+  margin-bottom:6px;
+}
+
+/* ROLE */
+.role{
+  color:white;
+  opacity:0.85;
+
+  font-weight:500;
+
+  margin-bottom:20px;
+}
+
+/* DESKRIPSI */
+.desc{
+  max-width:750px;
+
+  margin:0 auto 18px;
+
+  font-size:15px;
+  line-height:1.8;
+
+  color:white;
+  opacity:0.9;
+}
+
+/* INFO BOX */
+.info{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+
+  gap:15px;
+
+  margin:30px 0;
+}
+
+.box{
+  min-width:170px;
+
+  padding:15px 20px;
+
+  background:rgba(255,255,255,0.15);
+
+  backdrop-filter:blur(10px);
+
+  border:1px solid rgba(255,255,255,0.2);
+
+  border-radius:14px;
+
+  transition:0.3s;
+}
+
+.box:hover{
+  transform:translateY(-5px);
+  background:rgba(255,255,255,0.22);
+}
+
+.box h3{
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+.box p{
+  font-size:13px;
+  opacity:0.9;
+}
+
+/* JUDUL MAP */
+.map-title{
+  margin-top:35px;
+  margin-bottom:15px;
+
+  color:white;
+
+  font-size:22px;
+  font-weight:600;
+}
+
+/* MAP */
+#map{
+  width:100%;
+  height:450px;
+
+  border-radius:15px;
+
+  margin-top:10px;
+
+  box-shadow:0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* KOORDINAT */
+.coords{
+  margin-top:15px;
+
+  color:white;
+  opacity:0.9;
+
+  font-size:14px;
+}
+
+/* HILANGKAN BULAT PADA TILE MAP */
+#map *,
+.leaflet-container,
+.leaflet-pane,
+.leaflet-tile,
+.leaflet-pane img{
+  border-radius:0 !important;
+}
+
+/* BUTTON */
+.btn{
+  display:inline-block;
+
+  margin-top:25px;
+
+  padding:12px 25px;
+
+  border-radius:40px;
+
+  text-decoration:none;
+
+  font-weight:600;
+
+  color:white;
+
+  background:rgba(255,255,255,0.2);
+
+  border:1px solid rgba(255,255,255,0.3);
+
+  transition:0.3s;
+}
+
+.btn:hover{
+  background:white;
+  color:var(--brown);
+
+  transform:translateY(-2px);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+  .profile-card{
+    padding:25px;
+  }
+
+  .profile-card h1{
+    font-size:22px;
+  }
+
+  .box{
+    min-width:140px;
+  }
+
+  #map{
+    height:350px;
+  }
+
+  .map-title{
+    font-size:18px;
+  }
+}

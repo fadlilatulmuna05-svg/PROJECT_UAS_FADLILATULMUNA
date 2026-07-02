@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile | Fadlilatul Muna</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/myprofile.css">
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#4b2e2b">
+  <link rel="icon" href="img/favicon.png">
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="profile-card">
+
+      <img src="img/fadilamuna.jpeg" alt="Profile Foto">
+
+      <h1>Fadlilatul Muna</h1>
+      <p class="role">Mathematics Student | Analyst | Problem Solver</p>
+
+      <p class="desc">
+        Saya adalah mahasiswa Matematika yang memiliki ketertarikan pada analisis data, pemodelan matematika, serta pemecahan masalah berbasis logika dan sistematis.
+        Saya terbiasa mengubah permasalahan kompleks menjadi bentuk yang lebih sederhana melalui pendekatan matematis.
+      </p>
+
+      <p class="desc">
+        Dalam pengembangan kemampuan, saya juga mempelajari dan menggunakan teknologi seperti HTML, CSS, dan Microsoft Excel.
+        Skill ini saya terapkan dalam beberapa project seperti pembuatan web sederhana dan analisis data nilai mahasiswa.
+      </p>
+
+      <p class="desc">
+        Selain itu, saya juga menggunakan POM-QM dan konsep algoritma untuk membantu menyelesaikan masalah optimasi dan perhitungan kuantitatif dalam bidang matematika terapan.
+      </p>
+
+      <p class="desc">
+        Saya juga memiliki kemampuan problem solving yang kuat, yang membantu saya dalam menyelesaikan berbagai tugas akademik maupun project secara terstruktur dan efisien.
+      </p>
+
+      <p class="desc">
+        Di luar akademik, saya menyukai aktivitas membaca, menonton film, dan mengerjakan soal-soal matematika yang menantang untuk melatih pola pikir dan konsistensi dalam menyelesaikan masalah.
+      </p>
+
+      <!-- INFO -->
+      <div class="info">
+
+        <div class="box">
+          <h3>📧 Email</h3>
+          <p>efadlilatulmuna05@gmail.com</p>
+        </div>
+
+        <div class="box">
+          <h3>🎓 Pendidikan</h3>
+          <p>Universitas Nahdlatul Ulama Al Ghazali</p>
+        </div>
+
+        <div class="box">
+          <h3>💻 Skill</h3>
+          <p>HTML, CSS, Excel, POM-QM</p>
+        </div>
+
+        <div class="box">
+          <h3>🎯 Hobby</h3>
+          <p>Membaca, Menonton Film, dan Menyelesaikan Tantangan Matematika</p>
+        </div>
+
+      </div>
+
+      <!-- MAP -->
+      <h2 class="map-title">📍 Lokasi Saya Saat Ini</h2>
+
+      <div id="map"></div>
+
+      <p id="coords" class="coords"></p>
+
+      <!-- BUTTON -->
+      <a href="beranda.html" class="btn">⬅ Back</a>
+
+    </div>
+
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+navigator.geolocation.getCurrentPosition(
+  function(position){
+
+    const lat = position.coords.latitude;
+    const lng = position.coords.longitude;
+    const accuracy = position.coords.accuracy;
+
+    console.log("Latitude:", lat);
+    console.log("Longitude:", lng);
+    console.log("Accuracy:", accuracy, "meter");
+
+    const map = L.map('map', {
+      scrollWheelZoom: true
+    }).setView([lat, lng], 17);
+
+    L.tileLayer(
+      'https://{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}',
+      {
+        maxZoom: 20,
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+      }
+    ).addTo(map);
+
+    L.marker([lat, lng])
+      .addTo(map)
+      .bindPopup('📍 Lokasi Saya Saat Ini')
+      .openPopup();
+
+    L.circle([lat, lng], {
+      radius: accuracy,
+      color: '#4285F4',
+      fillColor: '#4285F4',
+      fillOpacity: 0.2
+    }).addTo(map);
+
+    document.getElementById('coords').innerHTML = `
+      Latitude: ${lat.toFixed(6)}
+      <br>
+      Longitude: ${lng.toFixed(6)}
+      <br>
+      Akurasi: ± ${Math.round(accuracy)} meter
+    `;
+
+  },
+
+  function(error){
+
+    let message = '';
+
+    switch(error.code){
+      case error.PERMISSION_DENIED:
+        message = 'Izin lokasi ditolak.';
+        break;
+
+      case error.POSITION_UNAVAILABLE:
+        message = 'Informasi lokasi tidak tersedia.';
+        break;
+
+      case error.TIMEOUT:
+        message = 'Permintaan lokasi melebihi batas waktu.';
+        break;
+
+      default:
+        message = 'Terjadi kesalahan saat mengambil lokasi.';
+    }
+
+    alert(message);
+  },
+
+  {
+    enableHighAccuracy: true,
+    timeout: 10000,
+    maximumAge: 0
+  }
+);
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+
+    navigator.serviceWorker.register('./sw.js')
+      .then((registration) => {
+        console.log('Service Worker berhasil didaftarkan');
+      })
+      .catch((error) => {
+        console.error('Gagal mendaftarkan Service Worker:', error);
+      });
+
+  });
+}
+</script>
+<script>
+if ('Notification' in window) {
+
+  Notification.requestPermission()
+    .then(permission => {
+
+      if (permission === 'granted') {
+
+        new Notification('Selamat Datang!', {
+          body: 'Halaman Profile Fadlilatul Muna berhasil dibuka.'
+        });
+
+      }
+
+    });
+
+}
+</script>
+</body>
+</html>

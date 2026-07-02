@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Fadlilatul Muna</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/index.css">
+
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#4b2e2b">
+    <link rel="icon" href="img/favicon.png">
+</head>
+
+<body>
+
+```
+<div class="container">
+
+    <div class="flip-card">
+
+        <div class="flip-card-inner">
+
+            <!-- DEPAN -->
+            <div class="flip-card-front">
+
+                <img src="img/fadila.jpeg" alt="Foto Fadlilatul Muna">
+
+                <h3>FADLILATUL MUNA</h3>
+
+                <p class="desc">
+                    Mahasiswa Program Studi Matematika
+                </p>
+
+            </div>
+
+            <!-- BELAKANG -->
+            <div class="flip-card-back">
+
+                <div class="info">
+
+                    <div class="row">
+                        <span>Nama</span>
+                        <span>:</span>
+                        <span>Fadlilatul Muna</span>
+                    </div>
+
+                    <div class="row">
+                        <span>NIM</span>
+                        <span>:</span>
+                        <span>24EN10003</span>
+                    </div>
+
+                    <div class="row">
+                        <span>Prodi</span>
+                        <span>:</span>
+                        <span>Matematika</span>
+                    </div>
+
+                    <div class="row">
+                        <span>Kampus</span>
+                        <span>:</span>
+                        <span>Universitas Nahdlatul Ulama Al Ghazali Cilacap</span>
+                    </div>
+
+                </div>
+
+                <a href="beranda.html" class="btn">
+                    My Portfolio
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- AUDIO -->
+    <div class="audio-box">
+  <audio controls>
+    <source src="audio/perkenalan.aac" type="audio/mpeg">
+  </audio>
+
+</div>
+```
+<script>
+if ('serviceWorker' in navigator) {
+
+  window.addEventListener('load', async () => {
+    console.log("Masuk ke load");
+    try {
+
+      const registration = await navigator.serviceWorker.register('./sw.js');
+
+      console.log('Service Worker berhasil didaftarkan');
+
+      const permission = await Notification.requestPermission();
+
+      if (permission === 'granted') {
+        console.log("Akan menampilkan notifikasi");
+        registration.showNotification('🎉 Selamat Datang!', {
+          body: 'Website Profile Fadlilatul Muna berhasil dibuka.',
+          icon: './img/icon-192.png',
+          badge: './img/icon-192.png'
+        });
+
+      }
+
+    } catch (err) {
+
+      console.error(err);
+
+    }
+
+  });
+
+}
+</script>
+</body>
+</html>
