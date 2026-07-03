@@ -1,10 +1,18 @@
-const API_URL = "https://project-uas-fadlilatulmuna-fk52.vercel.app";
+/* =========================
+   API URL
+========================= */
+const API_URL = "https://project-uas-fadlilatulmuna-1h9y.vercel.app";
+
 const articleList = document.getElementById("articleList");
 
-/* DATA */
+/* =========================
+   DATA
+========================= */
 let articles = [];
 
-/* LOAD DATA */
+/* =========================
+   LOAD DATA
+========================= */
 async function loadArticles() {
   try {
     const response = await fetch(`${API_URL}/artikel`);
@@ -17,18 +25,20 @@ async function loadArticles() {
     renderArticles();
 
   } catch (error) {
-    console.error(error);
+    console.error("Error:", error);
 
     articleList.innerHTML = `
       <div class="empty">
-        <h2>Gagal Memuat Artikel</h2>
-        <p>Pastikan backend berjalan.</p>
+        <h2>❌ Gagal Memuat Artikel</h2>
+        <p>Pastikan backend online dan API dapat diakses.</p>
       </div>
     `;
   }
 }
 
-/* RENDER */
+/* =========================
+   RENDER
+========================= */
 function renderArticles() {
 
   articleList.innerHTML = "";
@@ -46,13 +56,13 @@ function renderArticles() {
   articles.forEach((article) => {
 
     const div = document.createElement("div");
-    div.classList.add("article-card");
+    div.className = "article-card";
 
     div.innerHTML = `
       <h2>${article.title}</h2>
 
       <div class="article-date">
-        ${new Date(article.created_at).toLocaleString()}
+        ${new Date(article.created_at).toLocaleString("id-ID")}
       </div>
 
       <p>${article.content}</p>
@@ -78,18 +88,22 @@ function renderArticles() {
 
 }
 
-/* EDIT */
+/* =========================
+   EDIT
+========================= */
 function editArticle(id) {
-
   localStorage.setItem("editArticleId", id);
   window.location.href = "menulis.html";
-
 }
 
-/* DELETE */
+/* =========================
+   DELETE
+========================= */
 async function deleteArticle(id) {
 
-  if (!confirm("Yakin ingin menghapus artikel?")) return;
+  const yakin = confirm("Yakin ingin menghapus artikel?");
+
+  if (!yakin) return;
 
   try {
 
@@ -109,12 +123,14 @@ async function deleteArticle(id) {
 
   } catch (error) {
 
-    console.error(error);
-    alert("Gagal menghapus artikel");
+    console.error("Error:", error);
+    alert("❌ Gagal menghapus artikel.");
 
   }
 
 }
 
-/* INIT */
-loadArticles();
+/* =========================
+   INIT
+========================= */
+document.addEventListener("DOMContentLoaded", loadArticles);
