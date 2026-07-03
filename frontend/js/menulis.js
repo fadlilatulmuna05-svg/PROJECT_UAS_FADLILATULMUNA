@@ -1,14 +1,21 @@
-const API_URL = "https://project-uas-fadlilatulmuna-fk52.vercel.app";
+/* =========================
+   API URL
+========================= */
+const API_URL = "https://project-uas-fadlilatulmuna-1h9y.vercel.app";
 
 const form = document.getElementById("articleForm");
 const titleInput = document.getElementById("title");
 const contentInput = document.getElementById("content");
 
-/* ID ARTIKEL YANG DIEDIT */
+/* =========================
+   ID ARTIKEL YANG DIEDIT
+========================= */
 const editArticleId = localStorage.getItem("editArticleId");
 
-/* LOAD DATA SAAT MODE EDIT */
-window.addEventListener("load", async () => {
+/* =========================
+   LOAD DATA SAAT MODE EDIT
+========================= */
+window.addEventListener("DOMContentLoaded", async () => {
 
   if (!editArticleId) return;
 
@@ -34,8 +41,10 @@ window.addEventListener("load", async () => {
 
 });
 
-/* SUBMIT */
-form.addEventListener("submit", async function (e) {
+/* =========================
+   SUBMIT FORM
+========================= */
+form.addEventListener("submit", async (e) => {
 
   e.preventDefault();
 
@@ -43,18 +52,18 @@ form.addEventListener("submit", async function (e) {
   const content = contentInput.value.trim();
 
   /* VALIDASI */
-  if (title === "" || content === "") {
+  if (!title || !content) {
     showToast("⚠️ Semua field wajib diisi");
     return;
   }
 
   if (title.length < 5) {
-    showToast("⚠️ Judul terlalu pendek");
+    showToast("⚠️ Judul minimal 5 karakter");
     return;
   }
 
   if (content.length < 20) {
-    showToast("⚠️ Artikel terlalu pendek");
+    showToast("⚠️ Isi artikel minimal 20 karakter");
     return;
   }
 
@@ -62,7 +71,9 @@ form.addEventListener("submit", async function (e) {
 
     let response;
 
-    /* MODE EDIT */
+    /* =========================
+       UPDATE
+    ========================= */
     if (editArticleId) {
 
       response = await fetch(`${API_URL}/artikel/${editArticleId}`, {
@@ -78,7 +89,9 @@ form.addEventListener("submit", async function (e) {
 
     }
 
-    /* MODE TAMBAH */
+    /* =========================
+       CREATE
+    ========================= */
     else {
 
       response = await fetch(`${API_URL}/artikel`, {
@@ -106,24 +119,26 @@ form.addEventListener("submit", async function (e) {
 
     setTimeout(() => {
       window.location.href = "artikel.html";
-    }, 1200);
+    }, 1000);
 
   } catch (error) {
 
     console.error(error);
-    showToast("❌ Terjadi kesalahan");
+    showToast("❌ Gagal menyimpan artikel");
 
   }
 
 });
 
-/* TOAST */
+/* =========================
+   TOAST
+========================= */
 function showToast(message) {
 
   const toast = document.createElement("div");
 
   toast.className = "toast";
-  toast.innerText = message;
+  toast.textContent = message;
 
   document.body.appendChild(toast);
 
